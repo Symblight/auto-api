@@ -48,7 +48,7 @@ class UploadController {
         destination: 'public/uploads',
         plugins: [
           imageminMozjpeg({
-            quality: 50,
+            quality: 70,
           }),
           imageminPngquant({
             quality: [0.6, 0.8],

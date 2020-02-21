@@ -3,9 +3,9 @@
 const Vehicle = use('App/Models/Vehicle');
 
 class VehicleController {
-  async index() {
+  async index({ params }) {
     try {
-      return response.status(200);
+      return await Vehicle.find(params.id);
     } catch (error) {
       return response.status(500);
     }
@@ -13,12 +13,12 @@ class VehicleController {
 
   async createCar({ response, request }) {
     try {
-      const params = request.only(['brand', 'description', 'price', 'imageUrl']);
+      const payload = request.only(['brand', 'description', 'price', 'imageUrl']);
       const car = await Vehicle.create({
-        brand: params.brand,
-        description: params.description,
-        imageUrl: params.imageUrl,
-        price: params.price,
+        brand: payload.brand,
+        description: payload.description,
+        imageUrl: payload.imageUrl,
+        price: payload.price,
       });
       return await Vehicle.find(car.id);
     } catch (error) {
@@ -26,16 +26,27 @@ class VehicleController {
     }
   }
 
-  async updateCar() {
+  async updateCar({ request, params }) {
     try {
-      return response.status(200);
+      const payload = request.only(['brand', 'description', 'price', 'imageUrl']);
+
+      const car = await Vehicle.findOrFail(params.id);
+
+      car.merge(payload);
+
+      await car.save();
+
+      return await Vehicle.find(car.id);
     } catch (error) {
       return response.status(500);
     }
   }
 
-  async removeCar() {
+  async removeCar({ response, params }) {
     try {
+      await Vehicle.query()
+        .where('id', params.id)
+        .delete();
       return response.status(200);
     } catch (error) {
       return response.status(500);
