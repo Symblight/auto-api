@@ -4,6 +4,10 @@ const Upload = use('App/Models/Upload');
 const mime = require('mime-types');
 const path = require('path');
 const fs = require('fs');
+const imagemin = require('imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 
 class UploadController {
   async index({ response }) {
@@ -44,6 +48,20 @@ class UploadController {
     try {
       fs.copyFileSync(file.tmpPath, filePath);
       fs.unlinkSync(file.tmpPath);
+      await imagemin([`public/uploads/${name}`], {
+        destination: 'public/uploads',
+        plugins: [
+          imageminMozjpeg({
+            quality: 50,
+          }),
+          imageminPngquant({
+            quality: [0.6, 0.8],
+          }),
+          imageminJpegtran({
+            progressive: true,
+          }),
+        ],
+      });
     } catch (e) {
       return response.error(500, 'unable_to_save_file');
     }
@@ -61,7 +79,6 @@ class UploadController {
     const file = await Upload.findOrFail(params.uploadId);
 
     response.attachment(Upload.getSystemPath(file.file_name), file.client_name);
-    // response.status(200).send(Upload.getSystemPath(file.file_name), file.client_name);
   }
 }
 

@@ -29,6 +29,10 @@
     "@adonisjs/session": "^1.0.29",
     "@adonisjs/shield": "^1.0.8",
     "cloudinary": "^1.19.0",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
     "mime-types": "^2.1.26",
     "pg": "^7.18.1",
     "uninstall": "0.0.0"
