@@ -21,7 +21,10 @@ Route.get('/', () => {
 });
 
 Route.group(() => {
+  Route.get('/', 'VehicleController.index');
+  Route.put('/', 'VehicleController.updateCar');
   Route.post('/', 'VehicleController.createCar');
+  Route.delete('/', 'VehicleController.removeCar');
 }).prefix('api/v1/vehicle');
 
 Route.group(() => {})

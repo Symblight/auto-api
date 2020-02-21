@@ -10,10 +10,6 @@ const imageminPngquant = require('imagemin-pngquant');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
 class UploadController {
-  async index({ response }) {
-    return response.json({ status: true, data: 'It Works ' });
-  }
-
   async upload({ request, response }) {
     const file = request.file('file', {
       size: '20mb',
