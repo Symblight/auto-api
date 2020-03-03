@@ -13,12 +13,30 @@ class VehicleController {
 
   async createCar({ response, request }) {
     try {
-      const payload = request.only(['brand', 'description', 'price', 'imageUrl']);
+      const payload = request.only([
+        'title',
+        'price',
+        'imageUrl',
+        'passenger',
+        'color',
+        'engine',
+        'fuel',
+        'bags',
+        'year',
+        'carcase',
+      ]);
       const car = await Vehicle.create({
-        brand: payload.brand,
-        description: payload.description,
+        title: payload.title,
         imageUrl: payload.imageUrl,
+        description: '',
         price: payload.price,
+        passenger: payload.passenger,
+        year: payload.year,
+        color: payload.color,
+        carcase: payload.carcase,
+        engine: payload.engine,
+        fuel: payload.fuel,
+        bags: payload.bags,
       });
       return await Vehicle.find(car.id);
     } catch (error) {
@@ -28,7 +46,18 @@ class VehicleController {
 
   async updateCar({ request, params }) {
     try {
-      const payload = request.only(['brand', 'description', 'price', 'imageUrl']);
+      const payload = request.only([
+        'title',
+        'price',
+        'imageUrl',
+        'passenger',
+        'color',
+        'engine',
+        'fuel',
+        'bags',
+        'year',
+        'carcase',
+      ]);
 
       const car = await Vehicle.findOrFail(params.id);
 

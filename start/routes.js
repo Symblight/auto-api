@@ -22,6 +22,7 @@ Route.get('/', () => {
 
 Route.group(() => {
   Route.get('/:id', 'VehicleController.index');
+  Route.get('/all', 'VehicleController.index');
   Route.put('/:id', 'VehicleController.updateCar');
   Route.post('/', 'VehicleController.createCar');
   Route.delete('/:id', 'VehicleController.removeCar');

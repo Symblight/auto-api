@@ -3,6 +3,7 @@
 const Upload = use('App/Models/Upload');
 const mime = require('mime-types');
 const path = require('path');
+const Env = use('Env');
 const fs = require('fs');
 const imagemin = require('imagemin');
 const imageminJpegtran = require('imagemin-jpegtran');
@@ -68,7 +69,10 @@ class UploadController {
       size: file.size,
     });
 
-    return await Upload.find(upload.id);
+    const carImage = await Upload.find(upload.id);
+    carImage.path = Env.get('APP_URL') + '/uploads/' + carImage.file_name;
+
+    return carImage;
   }
 
   async getPublicFile({ params, response }) {

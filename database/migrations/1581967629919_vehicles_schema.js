@@ -7,17 +7,17 @@ class VehiclesSchema extends Schema {
   up() {
     this.create('vehicles', table => {
       table.increments();
-      table.string('brand', 80).notNullable();
+      table.string('title', 180).notNullable();
       table.string('description', 280);
-      table.string('imageUrl', 80);
-      table.jsonb('imagesUrl', 380);
+      table.string('imageUrl', 180);
       table.string('price', 40).notNullable();
-
-      table
-        .integer('modify_id', 40)
-        .unsigned()
-        .references('id')
-        .inTable('modifications');
+      table.string('passenger', 40).notNullable();
+      table.string('color', 40).notNullable();
+      table.string('carcase', 40).notNullable();
+      table.string('engine', 40).notNullable();
+      table.string('fuel', 40).notNullable();
+      table.string('bags', 40).notNullable();
+      table.string('year', 80).notNullable();
       table.timestamps();
     });
   }
@@ -26,5 +26,4 @@ class VehiclesSchema extends Schema {
     this.drop('vehicles');
   }
 }
-
 module.exports = VehiclesSchema;
