@@ -3,7 +3,7 @@
 const Vehicle = use('App/Models/Vehicle');
 
 class VehicleController {
-  async index({ params }) {
+  async index({ response, params }) {
     try {
       return await Vehicle.find(params.id);
     } catch (error) {
@@ -44,7 +44,7 @@ class VehicleController {
     }
   }
 
-  async updateCar({ request, params }) {
+  async updateCar({ response, request, params }) {
     try {
       const payload = request.only([
         'title',
@@ -68,6 +68,18 @@ class VehicleController {
       return await Vehicle.find(car.id);
     } catch (error) {
       return response.status(500);
+    }
+  }
+
+  async allCars({ response, request, params }) {
+
+    try {
+      console.log(request, 22222)
+      const page = params.page || 1
+      return await Vehicle.query().paginate(page)
+    } catch (error) {
+      console.log('dfd')
+     //  return response.status(500);
     }
   }
 

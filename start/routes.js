@@ -22,11 +22,14 @@ Route.get('/', () => {
 
 Route.group(() => {
   Route.get('/:id', 'VehicleController.index');
-  Route.get('/all', 'VehicleController.index');
   Route.put('/:id', 'VehicleController.updateCar');
   Route.post('/', 'VehicleController.createCar');
   Route.delete('/:id', 'VehicleController.removeCar');
 }).prefix('api/v1/vehicle');
+
+Route.group(() => {
+  Route.get('/', 'VehicleController.allCars');
+}).prefix('api/v1/vehicles');
 
 Route.group(() => {})
   .prefix('api/v1/vehicle')
