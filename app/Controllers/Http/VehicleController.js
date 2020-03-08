@@ -24,6 +24,7 @@ class VehicleController {
         'bags',
         'year',
         'carcase',
+        'imagesUrl',
       ]);
       const car = await Vehicle.create({
         title: payload.title,
@@ -37,6 +38,7 @@ class VehicleController {
         engine: payload.engine,
         fuel: payload.fuel,
         bags: payload.bags,
+        imagesUrl: JSON.stringify(payload.imagesUrl),
       });
       return await Vehicle.find(car.id);
     } catch (error) {
@@ -71,15 +73,12 @@ class VehicleController {
     }
   }
 
-  async allCars({ response, request, params }) {
-
+  async allCars({ response, request }) {
     try {
-      console.log(request, 22222)
-      const page = params.page || 1
-      return await Vehicle.query().paginate(page)
+      const page = request.get().page || 1;
+      return await Vehicle.query().paginate(page, 5);
     } catch (error) {
-      console.log('dfd')
-     //  return response.status(500);
+      return response.status(500);
     }
   }
 

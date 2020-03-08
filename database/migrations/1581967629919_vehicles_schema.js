@@ -10,6 +10,7 @@ class VehiclesSchema extends Schema {
       table.string('title', 180).notNullable();
       table.string('description', 280);
       table.string('imageUrl', 180);
+      table.json('imagesUrl').defaultTo('[]');
       table.string('price', 40).notNullable();
       table.string('passenger', 40).notNullable();
       table.string('color', 40).notNullable();

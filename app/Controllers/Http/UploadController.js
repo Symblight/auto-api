@@ -45,20 +45,6 @@ class UploadController {
     try {
       fs.copyFileSync(file.tmpPath, filePath);
       fs.unlinkSync(file.tmpPath);
-      await imagemin([`public/uploads/${name}`], {
-        destination: 'public/uploads',
-        plugins: [
-          imageminMozjpeg({
-            quality: 70,
-          }),
-          imageminPngquant({
-            quality: [0.6, 0.8],
-          }),
-          imageminJpegtran({
-            progressive: true,
-          }),
-        ],
-      });
     } catch (e) {
       return response.error(500, 'unable_to_save_file');
     }

@@ -28,7 +28,7 @@ Route.group(() => {
 }).prefix('api/v1/vehicle');
 
 Route.group(() => {
-  Route.get('/', 'VehicleController.allCars');
+  Route.get('/:page?', 'VehicleController.allCars');
 }).prefix('api/v1/vehicles');
 
 Route.group(() => {})
