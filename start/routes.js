@@ -31,6 +31,10 @@ Route.group(() => {
   Route.get('/:page?', 'VehicleController.allCars');
 }).prefix('api/v1/vehicles');
 
+Route.group(() => {
+  Route.get('/', 'CategoryController.index');
+}).prefix('api/v1/categories');
+
 Route.group(() => {})
   .prefix('api/v1/vehicle')
   .middleware('auth');

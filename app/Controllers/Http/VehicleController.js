@@ -23,22 +23,22 @@ class VehicleController {
         'fuel',
         'bags',
         'year',
-        'carcase',
         'imagesUrl',
+        'category',
       ]);
       const car = await Vehicle.create({
         title: payload.title,
-        imageUrl: payload.imageUrl,
+        image_url: payload.imageUrl,
         description: '',
         price: payload.price,
         passenger: payload.passenger,
         year: payload.year,
         color: payload.color,
-        carcase: payload.carcase,
         engine: payload.engine,
         fuel: payload.fuel,
         bags: payload.bags,
-        imagesUrl: JSON.stringify(payload.imagesUrl),
+        category_id: payload.category,
+        images_url: JSON.stringify(payload.imagesUrl),
       });
       return await Vehicle.find(car.id);
     } catch (error) {
@@ -58,7 +58,8 @@ class VehicleController {
         'fuel',
         'bags',
         'year',
-        'carcase',
+        'imagesUrl',
+        'category',
       ]);
 
       const car = await Vehicle.findOrFail(params.id);

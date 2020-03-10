@@ -8,6 +8,7 @@ class CategoriesSchema extends Schema {
     this.create('categories', table => {
       table.increments();
       table.string('title', 80).notNullable();
+      table.string('image_url', 180);
       table.timestamps();
     });
   }

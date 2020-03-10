@@ -9,16 +9,20 @@ class VehiclesSchema extends Schema {
       table.increments();
       table.string('title', 180).notNullable();
       table.string('description', 280);
-      table.string('imageUrl', 180);
-      table.json('imagesUrl').defaultTo('[]');
+      table.string('image_url', 180);
+      table.json('images_url').defaultTo('[]');
       table.string('price', 40).notNullable();
       table.string('passenger', 40).notNullable();
       table.string('color', 40).notNullable();
-      table.string('carcase', 40).notNullable();
       table.string('engine', 40).notNullable();
       table.string('fuel', 40).notNullable();
       table.string('bags', 40).notNullable();
       table.string('year', 80).notNullable();
+      table
+        .integer('category_id', 40)
+        .unsigned()
+        .references('id')
+        .inTable('categories');
       table.timestamps();
     });
   }
