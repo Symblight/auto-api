@@ -16,19 +16,34 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' };
-});
+Route.group(() => {
+  Route.get('login', 'UserController.get');
+  Route.delete('logout', 'UserController.logout');
+})
+  .prefix('api/v1/')
+  .middleware('auth');
+
+Route.group(() => {
+  Route.post('login', 'UserController.login');
+  Route.post('signup', 'UserController.register');
+  Route.put(':id', 'UserController.edit');
+}).prefix('api/v1/');
 
 Route.group(() => {
   Route.get('/:id', 'VehicleController.index');
-  Route.put('/:id', 'VehicleController.updateCar');
-  Route.post('/', 'VehicleController.createCar');
-  Route.delete('/:id', 'VehicleController.removeCar');
 }).prefix('api/v1/vehicle');
 
 Route.group(() => {
+  Route.put('/:id', 'VehicleController.updateCar');
+  Route.post('/', 'VehicleController.createCar');
+  Route.delete('/:id', 'VehicleController.removeCar');
+})
+  .prefix('api/v1/vehicle')
+  .middleware('auth');
+
+Route.group(() => {
   Route.get('/:page?', 'VehicleController.allCars');
+  Route.get('/c/:category?', 'VehicleController.carsByCategory');
 }).prefix('api/v1/vehicles');
 
 Route.group(() => {

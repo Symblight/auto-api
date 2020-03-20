@@ -83,6 +83,22 @@ class VehicleController {
     }
   }
 
+  /*
+   * @params see
+   */
+
+  async carsByCategory({ response, params }) {
+    try {
+      const category = params.category;
+      console.log(category);
+      return await Vehicle.query()
+        .where('category_id', category)
+        .fetch();
+    } catch (error) {
+      return response.status(500);
+    }
+  }
+
   async removeCar({ response, params }) {
     try {
       await Vehicle.query()
