@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Env = use('Env')
+const Env = use('Env');
 
 module.exports = {
   /*
@@ -65,7 +65,7 @@ module.exports = {
   cookie: {
     httpOnly: true,
     path: '/',
-    sameSite: false
+    sameSite: false,
   },
 
   /*
@@ -78,7 +78,7 @@ module.exports = {
   |
   */
   file: {
-    location: 'sessions'
+    location: 'sessions',
   },
 
   /*
@@ -94,6 +94,6 @@ module.exports = {
     port: 6379,
     password: null,
     db: 0,
-    keyPrefix: ''
-  }
-}
+    keyPrefix: '',
+  },
+};

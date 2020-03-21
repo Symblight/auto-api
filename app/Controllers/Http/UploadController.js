@@ -5,10 +5,6 @@ const mime = require('mime-types');
 const path = require('path');
 const Env = use('Env');
 const fs = require('fs');
-const imagemin = require('imagemin');
-const imageminJpegtran = require('imagemin-jpegtran');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminMozjpeg = require('imagemin-mozjpeg');
 
 class UploadController {
   async upload({ request, response }) {
