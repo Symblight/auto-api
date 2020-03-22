@@ -5,13 +5,14 @@ const User = use('App/Models/User');
 class UserController {
   async login({ request, response, auth }) {
     const { email, password } = request.all();
-
     if (auth.user) {
       return auth.user;
     }
 
+    console.log(auth);
     try {
-      await auth.remember(true).attempt(email.toLowerCase(), password);
+      await auth.remember(true).attempt(email, password);
+      console.log(email, password);
 
       return auth.user;
     } catch (e) {

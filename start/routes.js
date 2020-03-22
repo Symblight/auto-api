@@ -18,7 +18,7 @@ const Route = use('Route');
 
 Route.group(() => {
   Route.get('login', 'UserController.get');
-  Route.delete('logout', 'UserController.logout');
+  Route.delete('login', 'UserController.logout');
 })
   .prefix('api/v1/')
   .middleware('auth');

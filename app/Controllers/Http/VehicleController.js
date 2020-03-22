@@ -16,19 +16,19 @@ class VehicleController {
       const payload = request.only([
         'title',
         'price',
-        'imageUrl',
+        'image_url',
         'passenger',
         'color',
         'engine',
         'fuel',
         'bags',
         'year',
-        'imagesUrl',
+        'images_url',
         'category',
       ]);
       const car = await Vehicle.create({
         title: payload.title,
-        image_url: payload.imageUrl,
+        image_url: payload.image_url,
         description: '',
         price: payload.price,
         passenger: payload.passenger,
@@ -38,7 +38,7 @@ class VehicleController {
         fuel: payload.fuel,
         bags: payload.bags,
         category_id: payload.category,
-        images_url: JSON.stringify(payload.imagesUrl),
+        images_url: JSON.stringify(payload.images_url),
       });
       return await Vehicle.find(car.id);
     } catch (error) {
@@ -51,7 +51,7 @@ class VehicleController {
       const payload = request.only([
         'title',
         'price',
-        'imageUrl',
+        'image_url',
         'passenger',
         'color',
         'engine',
@@ -83,14 +83,12 @@ class VehicleController {
     }
   }
 
-  /*
-   * @params see
+  /**
+   * @name category
    */
-
   async carsByCategory({ response, params }) {
     try {
       const category = params.category;
-      console.log(category);
       return await Vehicle.query()
         .where('category_id', category)
         .fetch();
