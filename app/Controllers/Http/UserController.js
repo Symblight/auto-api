@@ -9,11 +9,8 @@ class UserController {
       return auth.user;
     }
 
-    console.log(auth);
     try {
       await auth.remember(true).attempt(email, password);
-      console.log(email, password);
-
       return auth.user;
     } catch (e) {
       return response.status(401).send('You are not registered!');

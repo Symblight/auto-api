@@ -99,10 +99,9 @@ class VehicleController {
 
   async removeCar({ response, params }) {
     try {
-      await Vehicle.query()
+      return Vehicle.query()
         .where('id', params.id)
         .delete();
-      return response.status(200);
     } catch (error) {
       return response.status(500);
     }
