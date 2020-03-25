@@ -24,7 +24,7 @@ class VehicleController {
         'bags',
         'year',
         'images_url',
-        'category',
+        'category_id',
       ]);
       const car = await Vehicle.create({
         title: payload.title,
@@ -37,7 +37,7 @@ class VehicleController {
         engine: payload.engine,
         fuel: payload.fuel,
         bags: payload.bags,
-        category_id: payload.category,
+        category_id: payload.category_id,
         images_url: JSON.stringify(payload.images_url),
       });
       return await Vehicle.find(car.id);

@@ -15,30 +15,27 @@ const Factory = use('Factory');
 
 class CategorySeeder {
   async run() {
-    await Factory.model('App/Models/Category').createMany(8, [
+    await Factory.model('App/Models/Category').createMany(7, [
       {
-        title: 'Внедорожники',
+        title: 'Аренда авто без водителя',
       },
       {
-        title: 'Эконом-класс',
+        title: 'Прокат авто с водителем',
       },
       {
-        title: 'Средний - класс',
+        title: 'Трансфер',
       },
       {
-        title: 'Бизнес - класс',
+        title: 'Микроавтобусы',
       },
       {
-        title: 'Микроавтобусы ',
+        title: 'Свадебные кортежи',
       },
       {
         title: 'Грузовые - авто',
       },
       {
-        title: 'Дома на колесах ',
-      },
-      {
-        title: 'Ретро автомобили',
+        title: 'Автобусы',
       },
     ]);
   }
