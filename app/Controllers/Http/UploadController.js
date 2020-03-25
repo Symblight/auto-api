@@ -52,7 +52,12 @@ class UploadController {
     });
 
     const carImage = await Upload.find(upload.id);
-    carImage.path = Env.get('APP_URL') + '/uploads/' + carImage.file_name;
+
+    const index = filePath.indexOf('uploads');
+    const pathToUploads = filePath.slice(index, filePath.length);
+    const normalizePath = pathToUploads.replace(/\\/g, '/');
+
+    carImage.path = Env.get('APP_URL') + '/' + normalizePath;
 
     return carImage;
   }

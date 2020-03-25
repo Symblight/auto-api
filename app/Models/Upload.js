@@ -12,7 +12,13 @@ class Upload extends Model {
   }
 
   static getPathToFile(filename) {
-    return [Helpers.publicPath('uploads')].join(path.sep);
+    return [
+      Helpers.publicPath('uploads'),
+      filename
+        .slice(0, 6)
+        .match(new RegExp('.{1,2}', 'g'))
+        .join(path.sep),
+    ].join(path.sep);
   }
 
   static getSystemPath(filename) {
