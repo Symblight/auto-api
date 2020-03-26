@@ -47,7 +47,15 @@ Route.group(() => {
 }).prefix('api/v1/vehicles');
 
 Route.group(() => {
-  Route.get('/', 'CategoryController.index');
+  Route.delete('/:id', 'CategoryController.remove');
+  Route.put('/:id', 'CategoryController.edit');
+  Route.post('/', 'CategoryController.create');
+})
+  .prefix('api/v1/categories')
+  .middleware('auth');
+
+Route.group(() => {
+  Route.get('/:page?', 'CategoryController.index');
 }).prefix('api/v1/categories');
 
 Route.group(() => {})
