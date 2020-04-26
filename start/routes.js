@@ -30,7 +30,9 @@ Route.group(() => {
 }).prefix('api/v1/');
 
 Route.group(() => {
-  Route.get('/:id', 'VehicleController.index');
+  Route.get('/c/:id', 'VehicleController.index');
+  Route.get('/f/search', 'VehicleController.filters');
+  Route.get('/search', 'VehicleController.searchByFilters');
 }).prefix('api/v1/vehicle');
 
 Route.group(() => {

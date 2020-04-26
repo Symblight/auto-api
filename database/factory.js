@@ -25,3 +25,25 @@ Factory.blueprint('App/Models/User', async (faker, i, data) => ({
 Factory.blueprint('App/Models/Category', async (faker, i, data) => ({
   title: data[i].title,
 }));
+
+Factory.blueprint('App/Models/Fuel', async (faker, i, data) => ({
+  name: data[i].name,
+}));
+
+Factory.blueprint('App/Models/Transmission', async (faker, i, data) => ({
+  name: data[i].name,
+}));
+
+Factory.blueprint('App/Models/Vehicle', async (faker, i, data) => ({
+  title: data[i].title,
+  description: data[i].description,
+  price: data[i].price,
+  passenger: data[i].passenger,
+  color: data[i].color,
+  engine: data[i].engine,
+  transmission_id: data[i].transmission_id,
+  fuel_id: data[i].fuel_id,
+  bags: data[i].bags,
+  year: data[i].year,
+  category_id: data[i].category_id,
+}));

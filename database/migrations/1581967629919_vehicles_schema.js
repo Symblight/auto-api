@@ -15,7 +15,16 @@ class VehiclesSchema extends Schema {
       table.string('passenger', 40).notNullable();
       table.string('color', 40).notNullable();
       table.string('engine', 40).notNullable();
-      table.string('fuel', 40).notNullable();
+      table
+        .integer('transmission_id', 40)
+        .unsigned()
+        .references('id')
+        .inTable('transmissions');
+      table
+        .integer('fuel_id', 40)
+        .unsigned()
+        .references('id')
+        .inTable('fuels');
       table.string('bags', 40).notNullable();
       table.string('year', 80).notNullable();
       table
