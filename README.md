@@ -23,7 +23,7 @@ CACHE_VIEWS=false
 APP_KEY=$GENERATE_KEY
 
 DB_CONNECTION=pg
-DB_HOST=127.0.0.1
+DB_HOST=postgres
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=$DB_PASSWORD
@@ -56,4 +56,17 @@ Run the following command to run startup seed.
 
 ```js
 npm run dev
+```
+
+## Docker
+
+# run
+
+```js
+docker-compose up
+```
+
+# migration 
+```js
+docker exec -it auto-api_app_1 adonis migration:run
 ```

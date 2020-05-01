@@ -29,8 +29,6 @@
     "@adonisjs/session": "^1.0.29",
     "@adonisjs/shield": "^1.0.8",
     "cloudinary": "^1.19.0",
-    "effector": "^20.12.2",
-    "effector-react": "^20.6.3",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",

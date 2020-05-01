@@ -5,6 +5,7 @@ const Schema = use('Schema');
 
 class UserSchema extends Schema {
   up() {
+    this.db.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp" schema public');
     this.create('users', table => {
       table.increments();
       table
