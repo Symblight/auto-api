@@ -1,7 +1,25 @@
 'use strict';
 
 const Category = use('App/Models/Category');
-
+/**
+ * @swagger
+ * definitions:
+ *   Category:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *       title:
+ *         type: string
+ *       image_url:
+ *         type: string
+ *       created_at:
+ *         type: string
+ *         format: date-time
+ *       updated_at:
+ *         type: string
+ *         format: date-time
+ */
 class CategoryController {
   async index({ response, request }) {
     try {

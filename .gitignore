@@ -12,3 +12,6 @@ database/*.sqlite
 
 # Uploads folder
 public/uploads
+
+docker
+.npm

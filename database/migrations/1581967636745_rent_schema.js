@@ -10,9 +10,9 @@ class RentSchema extends Schema {
       table.string('title', 80).notNullable();
       table.string('price', 80).notNullable();
       table.date('rent_start_time', 80).notNullable();
-      table.date('rent_start_end', 80).notNullable();
+      table.date('rent_end_time', 80).notNullable();
       table
-        .integer('vehicly_id', 40)
+        .integer('vehicle_id', 40)
         .unsigned()
         .references('id')
         .inTable('vehicles');

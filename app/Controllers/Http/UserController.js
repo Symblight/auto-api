@@ -1,7 +1,31 @@
 'use strict';
 
 const User = use('App/Models/User');
-
+/**
+ * @swagger
+ * definitions:
+ *   User:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *       username:
+ *         type: string
+ *       email:
+ *         type: string
+ *       password:
+ *         type: string
+ *       confirmEmail:
+ *         type: string
+ *       role:
+ *         type: string
+ *       created_at:
+ *         type: string
+ *         format: date-time
+ *       updated_at:
+ *         type: string
+ *         format: date-time
+ */
 class UserController {
   async login({ request, response, auth }) {
     const { email, password } = request.all();

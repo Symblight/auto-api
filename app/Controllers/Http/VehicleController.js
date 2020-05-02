@@ -6,7 +6,49 @@ const Transmission = use('App/Models/Transmission');
 const Category = use('App/Models/Category');
 const Database = use('Database');
 const _ = require('lodash');
-
+/**
+ * @swagger
+ * definitions:
+ *   Vehicle:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: integer
+ *       title:
+ *         type: string
+ *       description:
+ *         type: string
+ *       image_url:
+ *         type: string
+ *       images_url:
+ *         type: string
+ *         format: array
+ *       price:
+ *         type: string
+ *       passenger:
+ *         type: string
+ *       color:
+ *         type: string
+ *       engine:
+ *         type: string
+ *       transmission_id:
+ *         type: integer
+ *       fuel_id:
+ *         type: integer
+ *       bags:
+ *         type: string
+ *       year:
+ *         type: string
+ *         format: date-time
+ *       category_id:
+ *         type: integer
+ *       created_at:
+ *         type: string
+ *         format: date-time
+ *       updated_at:
+ *         type: string
+ *         format: date-time
+ */
 class VehicleController {
   async index({ response, params }) {
     try {

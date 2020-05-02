@@ -16,17 +16,85 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
+Route.get('/docs', 'SwaggerController.index');
+
+Route.get('/', () => {
+  return 'Auto RENT API';
+});
+
 Route.group(() => {
+  /**
+   * @swagger
+   * /login:
+   *   get:
+   *     description: Login.
+   *     responses:
+   *       200:
+   *         description: Logged in successfully
+   *         schema:
+   *           $ref: '#/definitions/User'
+   *       422:
+   *         description: Validation error
+   */
   Route.get('login', 'UserController.get');
+  /**
+   * @swagger
+   * /login:
+   *   delete:
+   *     description: Logout.
+   *     responses:
+   *       200:
+   *         description: Logout in successfully
+   *       422:
+   *         description: Validation error
+   */
   Route.delete('login', 'UserController.logout');
 })
   .prefix('api/v1/')
   .middleware('auth');
 
 Route.group(() => {
+  /**
+   * @swagger
+   * /login:
+   *   post:
+   *     description: Sign in.
+   *     parameters:
+   *       - email: email
+   *         description: User's email.
+   *         in: body
+   *         required: true
+   *         type: string
+   *       - password: password
+   *         description: User's password.
+   *         in: body
+   *         required: true
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: Logged in successfully
+   *         schema:
+   *           $ref: '#/definitions/User'
+   *       422:
+   *         description: Validation error
+   */
   Route.post('login', 'UserController.login');
+  /**
+   * @swagger
+   * /signup:
+   *   post:
+   *     description: Sign up.
+   *     parameters:
+   *     responses:
+   *       200:
+   *         description: Logged in successfully
+   *         schema:
+   *           $ref: '#/definitions/User'
+   *       422:
+   *         description: Validation error
+   */
   Route.post('signup', 'UserController.register');
-  Route.put(':id', 'UserController.edit');
+  // Route.put(':id', 'UserController.edit');
 }).prefix('api/v1/');
 
 Route.group(() => {
